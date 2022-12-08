@@ -14,7 +14,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception{
-        String input = "";
+        String input;
         boolean isRomanB;
         boolean isArabicB;
         boolean stillWorking = true;
@@ -22,11 +22,11 @@ public class Main {
             while (stillWorking) {
                 input = bufferedReader.readLine();
                 input = input.replaceAll("\\s+","");
-                String[] numbers = new String[2];
+                String[] numbers;
                 int[] numbersInt = new int[2];
                 String operand = matcherCheck(operands,input);
-                int resultInt = 0;
-                String resultString = "";
+                int resultInt;
+                String resultString;
                 isRomanB = isRoman(input);
                 isArabicB = isArabic(input);
 
@@ -70,7 +70,7 @@ public class Main {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()) {
-            out = out.append(new StringBuilder(text.substring(matcher.start(), matcher.end())) );
+            out.append(new StringBuilder(text.substring(matcher.start(), matcher.end())) );
         }
         return out.toString();
     }
@@ -84,7 +84,7 @@ public class Main {
     }
 
     public static int calc(int[] numbers,  String operand) throws Exception{
-        int result=0;
+        int result;
         switch (operand) {
             case "+":
                 result = numbers[0] + numbers[1];
@@ -105,9 +105,8 @@ public class Main {
     }
 
     enum RomanNumeral {
-        I(1), IV(4), V(5), IX(9), X(10); // condition 3: <=10
-        /* ,XL(40), L(50), XC(90), C(100),
-        CD(400), D(500), CM(900), M(1000);*/
+        I(1), IV(4), V(5), IX(9), X(10),XL(40), L(50), XC(90), C(100),
+        CD(400), D(500), CM(900), M(1000);
 
         private int value;
 
